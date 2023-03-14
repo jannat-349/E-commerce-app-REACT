@@ -1,23 +1,31 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import ProductContext from "./ProductContext";
 
 function ProductOutput() {
-  const { products, setProducts } = useContext(ProductContext);
-  function deleteProduct(index) {
-    if (window.confirm("Are you sure to delete?")) {
-      products[index].selected = false; //cause if i delete a selected product the same product added was also selected
-      const newProducts = products.filter((product, idx) => idx !== index);
-      setProducts([...newProducts]);
-    }
-  }
-  function selectProduct(index) {
-    const newProducts = [...products];
-    if (newProducts[index].selected) {
-      newProducts[index].selected = false;
+  const { products, setProducts, addToCart, setAddToCart } =
+    useContext(ProductContext);
+  //   const [product, setProduct] = useState({});
+  function addCart(index) {
+    if (products[index].quantity > 0) {
+      // setProduct((product) => ({...product, quantity: product.quantity - 1}));
+      // console.log(product);
+      // const product = [...products][index];
+      // console.log(product);
+      // product.quantity = product.quantity - 1;
+      //   console.log(products[index].quantity);
+      const newProducts = products.map((product) => {
+        if (product.productName === products[index].productName) {
+        //   console.log(product);
+          return { ...product, quantity: products[index].quantity - 1 };
+        }
+        return product;
+      });
+      setProducts(newProducts);
+      //   console.log(products[index].quantity);
+      setAddToCart([...addToCart, products[index].productName]);
     } else {
-      newProducts[index].selected = true;
+      alert("Stock Out!!!!!!!");
     }
-    setProducts([...newProducts]);
   }
   return (
     <div className="output">
@@ -25,7 +33,7 @@ function ProductOutput() {
         <thead>
           <tr>
             <th></th>
-            {products.length ? <th>Product Name</th> : <></>}
+            {products.length ? <th>Product</th> : <></>}
             <th></th>
           </tr>
         </thead>
@@ -33,26 +41,18 @@ function ProductOutput() {
           {products.map((product, index) => (
             <tr key={index}>
               <td>
-                <input
-                  type="checkbox"
-                  onChange={() => selectProduct(index)}
-                  checked={product.selected}
-                />
+                <p>{product.productName}</p>
+                <p>{product.price}</p>
+                <p>{product.quantity}</p>
               </td>
               <td>
-                {product.selected ? (
-                  <strike>{product.productName}</strike>
-                ) : (
-                  <p>{product.productName}</p>
-                )}
-              </td>
-              <td>
-                <button onClick={() => deleteProduct(index)}>Delete</button>
+                <button onClick={() => addCart(index)}>Add to Cart</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <div>{addToCart.length}</div>
     </div>
   );
 }
