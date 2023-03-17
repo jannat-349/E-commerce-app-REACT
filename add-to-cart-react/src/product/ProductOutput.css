@@ -70,4 +70,13 @@
     padding: 10px 20px;
     font-size: 20px;
     font-weight: 600;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.addCart_.addCart__count {
+    opacity: 0.5;
+}
+.addCart__count:active {
+    transform: scale(1.25);
+    opacity: 0.9;
 }

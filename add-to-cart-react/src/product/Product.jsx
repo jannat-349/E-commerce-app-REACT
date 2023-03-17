@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ProductContext from "./ProductContext";
+import ProductContext from "../context/ProductContext";
 import ProductOutput from "./ProductOutput";
 
 export default function Product() {
@@ -14,11 +14,10 @@ export default function Product() {
     { productName: "Notebook", price: 100, quantity: 5 },
     { productName: "Eraser", price: 5, quantity: 10 },
   ]);
-  const [addToCart, setAddToCart] = useState([]);
+  const [cartItemNumber, setCartItemNumber] = useState(0);
   return (
-    <ProductContext.Provider value={{ products, setProducts, addToCart, setAddToCart }}>
+    <ProductContext.Provider value={{ products, setProducts, cartItemNumber, setCartItemNumber }}>
       <ProductOutput />
-
     </ProductContext.Provider>
   );
 }
