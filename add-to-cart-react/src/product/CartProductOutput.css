@@ -1,38 +1,54 @@
 .cartOutput {
-    width: 50%;
-    margin: auto;
-    /* background-color: red; */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .cartProduct {
-    display: flex;
-    gap: 20px;
-    border: 2px solid black;
-    padding: 10px;
+  display: flex;
+  gap: 20px;
+  border: 2px solid black;
+  padding: 10px;
 }
 
 .back__btn {
-    border: 2px solid black;
-    font-size: 20px;
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: rgb(93, 190, 3);
-    border-radius: 30px;
-    transition: all 0.3s;
+  border: 2px solid black;
+  font-size: 20px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: rgb(93, 190, 3);
+  border-radius: 30px;
+  transition: all 0.3s;
 }
 
 .back__btn:hover {
-    cursor: pointer;
-    background-color: rgb(162, 206, 122);
+  cursor: pointer;
+  background-color: rgb(162, 206, 122);
 }
 .back__btn:active {
-    opacity: 0.7;
+  opacity: 0.7;
+}
+
+.remove__btn {
+  border: 2px solid black;
+  font-size: 15px;
+  padding: 5px 20px;
+  background-color: rgba(246, 36, 36, 0.932);
+  border-radius: 30px;
+  transition: all 0.3s;
+}
+
+.remove__btn:hover {
+  cursor: pointer;
+  background-color: rgba(247, 45, 45, 0.817);
+}
+.remove__btn:active {
+  opacity: 0.7;
 }
 
 .totalPrice {
-    font-size: 20px;
-    font-weight: 600;
+  font-size: 20px;
+  font-weight: 600;
 }

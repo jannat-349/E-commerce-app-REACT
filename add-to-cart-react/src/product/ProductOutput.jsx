@@ -26,8 +26,6 @@ function ProductOutput() {
       if (existingCartProduct) {
         const newCartProducts = cartProducts.map((cartProduct) => {
           if (cartProduct.productName === selectedProduct.productName) {
-            // console.log(cartProduct.productName);
-            // console.log(products[index].productName);
             setTotalPrice((totalPrice) => totalPrice + selectedProduct.price);
             return {
               ...cartProduct,
@@ -42,6 +40,7 @@ function ProductOutput() {
           ...cartProducts,
           {
             productName: selectedProduct.productName,
+            price: selectedProduct.price,
             quantity: 1,
           },
         ]);
@@ -82,7 +81,17 @@ function ProductOutput() {
       </div>
       {showCartBtn ? (
         <CartProductContext.Provider
-          value={{ cartProducts, setCartProducts, setShowCartBtn, totalPrice }}
+          value={{
+            products,
+            setProducts,
+            cartItemNumber,
+            setCartItemNumber,
+            cartProducts,
+            setCartProducts,
+            setShowCartBtn,
+            totalPrice,
+            setTotalPrice,
+          }}
         >
           <CartProductsOutput />
         </CartProductContext.Provider>
